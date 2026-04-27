@@ -45,4 +45,18 @@ def get_documents():
         doclist.append(row)
     return doclist
 
+@app.get('/search')
+def search(query: str):
+    results = collection.query(query_texts=[query], n_results=5)
+
+    ids = results["ids"]
+    docs = results["documents"]
+    distances = results["distances"]
+
+    list_results = []
+    for i in range(len(ids)):
+        row = {"id":results["ids"][i],"document":results["documents"][i],"distance":results["distances"][i]}
+        list_results.append(row)
+    return list_results
+
 app.mount("/", StaticFiles(directory="static", html=True), name="static")

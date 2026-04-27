@@ -30,4 +30,8 @@ collection.add(
         "Self-driving cars use lidar sensors to map their surroundings.",]
 )
 
-results = collection.get()
+#results = collection.get()
+
+query = "what is happening in science?"
+results = collection.query(query_texts=[query], n_results=5)
+print(results)
