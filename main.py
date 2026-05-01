@@ -55,7 +55,11 @@ def search(query: str):
 
     list_results = []
     for i in range(len(ids)):
-        row = {"id":results["ids"][i],"document":results["documents"][i],"distance":results["distances"][i]}
+        row = {
+            "id":results["ids"][i],
+            "document":results["documents"][i],
+            "distance":results["distances"][i]
+            }
         list_results.append(row)
     return list_results
 
